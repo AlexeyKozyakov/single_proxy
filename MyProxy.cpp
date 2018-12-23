@@ -110,7 +110,7 @@ void MyProxy::handlePollin(pollfd &selectedFd, int index) {
                             }
                         }
                     } else {
-                        selector.registerFd(client.getSocket(), POLLOUT);
+                        selectedFd.events = POLLOUT;
                         cache.find(client.getUrn())->second.addClient(client.getSocket());
                     }
                 }
